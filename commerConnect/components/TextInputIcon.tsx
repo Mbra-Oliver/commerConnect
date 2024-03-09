@@ -4,7 +4,12 @@ import { Fontisto } from "@expo/vector-icons";
 import { useState } from "react";
 import { COLORS } from "../constant/colors";
 
-const TextInputIcon = () => {
+interface TextInputIconProps {
+  icon: any;
+  [key: string]: any;
+}
+
+const TextInputIcon = ({ icon, ...props }: TextInputIconProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -18,11 +23,12 @@ const TextInputIcon = () => {
         },
       ]}
     >
-      <Fontisto name="email" size={24} color={COLORS.grayText} />
+      <Fontisto name={icon} size={24} color={COLORS.grayText} />
       <TextInput
+        {...props}
+        style={styles.input}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        placeholder="saisir"
       />
     </View>
   );
@@ -38,5 +44,9 @@ const styles = StyleSheet.create({
     gap: APP_DIMESION.DEFAULT_GAP,
     marginBottom: APP_DIMESION.DEFAULT_GAP,
     borderRadius: APP_DIMESION.DEFAULT_GAP,
+  },
+
+  input: {
+    flex: 1,
   },
 });

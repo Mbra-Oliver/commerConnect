@@ -1,17 +1,23 @@
 import {
   View,
   SafeAreaView,
+  ScrollView,
   Text,
   StyleSheet,
   StatusBar,
   Image,
+  Pressable,
+  TouchableOpacity,
 } from "react-native";
 import TextInputIcon from "../../../components/TextInputIcon";
 import { COLORS } from "../../../constant/colors";
 import { APP_DIMESION } from "../../../constant/dimension";
-import { APP_TEXT } from "../../../constant/text";
+import { APP_TEXT, AUTH_TEXT } from "../../../constant/text";
+import AuthButton from "../../../components/buttons/AuthButton";
 
 const Index = () => {
+  const handleLogin = () => {};
+
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar
@@ -39,8 +45,33 @@ const Index = () => {
           <Text style={styles.textColored}>Achète & vend en 1 click</Text>
         </View>
 
-        <TextInputIcon />
-        <TextInputIcon />
+        <TextInputIcon icon="phone" placeholder="+225 XX XX XX XX" />
+        <TextInputIcon icon="key" placeholder="xxxxxxxx" />
+
+        <View style={styles.forgotContainer}>
+          <Pressable>
+            <Text>{AUTH_TEXT.forgotText}</Text>
+          </Pressable>
+        </View>
+
+        <View style={styles.authButtonContainer}>
+          <AuthButton onClick={handleLogin} />
+        </View>
+
+        <View style={styles.newUserContainer}>
+          <Text>{AUTH_TEXT.AM_NEW}</Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: COLORS.primary,
+                fontWeight: "700",
+                textTransform: "lowercase",
+              }}
+            >
+              {AUTH_TEXT.NEW_USER_LINK}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -52,6 +83,8 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     padding: APP_DIMESION.DEFAULT_PADDING,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   container: {
@@ -90,5 +123,25 @@ const styles = StyleSheet.create({
 
   textColored: {
     color: COLORS.primary,
+  },
+
+  forgotContainer: {
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    paddingBottom: APP_DIMESION.DEFAULT_GAP,
+    paddingTop: APP_DIMESION.DEFAULT_GAP,
+  },
+
+  authButtonContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  newUserContainer: {
+    marginTop: APP_DIMESION.DEFAULT_GAP,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    gap: 3,
   },
 });
