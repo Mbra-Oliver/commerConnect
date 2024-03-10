@@ -17,19 +17,33 @@ import AuthButton from "../../../components/buttons/AuthButton";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
+const stepsContent = [
+  "Salut, comment tu t'appelles ?",
+  "Enregistre ton contact",
+  "Définir ton mot de passe",
+];
+
+const icons = ["hipchat", "phone", "key"];
+const isSecurity = [false, false, true];
+
 const Index = () => {
   const [phone, setPhone] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
-  const navigation = useRouter();
+  const naivgation = useRouter();
 
-  const handleLogin = () => {
-    const dataSend = {
-      phone,
-      password,
-    };
+  const handleRegister = () => {
+    if (currentStep < stepsContent.length) {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
 
-    console.log(dataSend);
+    // const dataSend = {
+    //   phone,
+    //   password,
+    // };
+
+    // console.log(dataSend);
   };
 
   const handleChangePhone = (event: string) => {
@@ -40,10 +54,9 @@ const Index = () => {
     setPassword(event);
   };
 
-  const goRegister = () => {
-    navigation.push("/register");
+  const goLogin = () => {
+    naivgation.push("/login");
   };
-
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar
@@ -60,30 +73,16 @@ const Index = () => {
           />
         </View>
 
-        <View style={styles.appName}>
-          <Text style={styles.mainText}>{APP_TEXT.appName}</Text>
-          <Text style={[styles.mainText, styles.textColored]}>
-            {APP_TEXT.appName1}
-          </Text>
+        <View style={styles.stepContainer}>
+          <Text style={styles.stepText}>{stepsContent[currentStep - 1]}</Text>
         </View>
 
-        <View style={styles.subTextContainer}>
-          <Text style={styles.textColored}>Achète & vend en 1 click</Text>
-        </View>
-
-        <TextInputIcon
-          icon="phone"
-          value={phone}
-          onChangeText={handleChangePhone}
-          placeholder="+225 XX XX XX XX"
-        />
-        <TextInputIcon
-          icon="key"
-          value={password}
-          onChangeText={handleChangePassword}
-          placeholder="xxxxxxxx"
-          secureTextEntry
-        />
+        {currentStep <= icons.length && (
+          <TextInputIcon
+            secureTextEntry={isSecurity[currentStep - 1]}
+            icon={icons[currentStep - 1]}
+          />
+        )}
 
         <View style={styles.forgotContainer}>
           <Pressable>
@@ -92,12 +91,19 @@ const Index = () => {
         </View>
 
         <View style={styles.authButtonContainer}>
-          <AuthButton text={AUTH_TEXT.loginText} onPress={handleLogin} />
+          <AuthButton
+            text={
+              currentStep < stepsContent.length
+                ? AUTH_TEXT.next
+                : AUTH_TEXT.registerText
+            }
+            onPress={handleRegister}
+          />
         </View>
 
         <View style={styles.newUserContainer}>
-          <Text>{AUTH_TEXT.AM_NEW}</Text>
-          <TouchableOpacity onPress={goRegister}>
+          <Text>{AUTH_TEXT.OLD_USER}</Text>
+          <TouchableOpacity onPress={goLogin}>
             <Text
               style={{
                 color: COLORS.primary,
@@ -105,7 +111,7 @@ const Index = () => {
                 textTransform: "lowercase",
               }}
             >
-              {AUTH_TEXT.NEW_USER_LINK}
+              {AUTH_TEXT.loginText}
             </Text>
           </TouchableOpacity>
         </View>
@@ -179,5 +185,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     gap: 3,
+  },
+
+  stepContainer: {
+    gap: 10,
+    marginBottom: 30,
+  },
+  stepText: {
+    color: COLORS.primary,
+    fontSize: 18,
   },
 });

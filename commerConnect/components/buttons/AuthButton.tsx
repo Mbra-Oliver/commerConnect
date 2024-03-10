@@ -4,13 +4,14 @@ import { COLORS } from "../../constant/colors";
 import { APP_DIMESION } from "../../constant/dimension";
 
 interface AuthButtonProps {
-  onClick: () => void;
+  onPress: () => void;
+  text: string;
 }
 
-const AuthButton = ({ onClick }: AuthButtonProps) => {
+const AuthButton = ({ onPress, text }: AuthButtonProps) => {
   return (
-    <TouchableOpacity style={styles.root}>
-      <Text style={styles.text}>{AUTH_TEXT.loginText}</Text>
+    <TouchableOpacity style={styles.root} onPress={onPress}>
+      <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
 };
