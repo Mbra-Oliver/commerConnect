@@ -9,6 +9,8 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
+import Toast from "react-native-toast-message";
+
 import TextInputIcon from "../../../components/TextInputIcon";
 import { COLORS } from "../../../constant/colors";
 import { APP_DIMESION } from "../../../constant/dimension";
@@ -27,14 +29,61 @@ const icons = ["hipchat", "phone", "key"];
 const isSecurity = [false, false, true];
 
 const Index = () => {
+  const [name, setName] = useState<string>();
   const [phone, setPhone] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   const naivgation = useRouter();
 
+  const showError = (description: string) => {
+    Toast.show({
+      type: "error",
+      text1: description,
+      position: "bottom",
+    });
+  };
+
+  //Valider les étapes
+  const validateStep = () => {
+    switch (currentStep) {
+      case 1:
+        if ((name && name.trim() === "") || name === undefined) {
+          showError("Votre nom est requis. Pouvez vous nous le fournir.");
+          return false;
+        }
+        break;
+
+      case 2:
+        if ((phone && phone.trim() === "") || phone === undefined) {
+          showError("Votre contact est requis.");
+          return false;
+        }
+        break;
+
+      case 3:
+        if (
+          (password && password.trim() === "") ||
+          password === undefined ||
+          password.length < 6
+        ) {
+          showError("Le mot de passe est requis et doit excéder 6 caractères.");
+          return false;
+        }
+
+        break;
+
+      default:
+        break;
+    }
+
+    return true;
+  };
+
   const handleRegister = () => {
-    if (currentStep < stepsContent.length) {
+    const isValid = validateStep();
+
+    if (isValid && currentStep < stepsContent.length) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
 
@@ -44,6 +93,10 @@ const Index = () => {
     // };
 
     // console.log(dataSend);
+  };
+
+  const handleChangeName = (event: string) => {
+    setName(event);
   };
 
   const handleChangePhone = (event: string) => {
@@ -77,10 +130,30 @@ const Index = () => {
           <Text style={styles.stepText}>{stepsContent[currentStep - 1]}</Text>
         </View>
 
-        {currentStep <= icons.length && (
+        {currentStep === 1 && (
           <TextInputIcon
             secureTextEntry={isSecurity[currentStep - 1]}
             icon={icons[currentStep - 1]}
+            value={name}
+            onChangeText={handleChangeName}
+          />
+        )}
+
+        {currentStep === 2 && (
+          <TextInputIcon
+            secureTextEntry={isSecurity[currentStep - 1]}
+            icon={icons[currentStep - 1]}
+            value={phone}
+            onChangeText={handleChangePhone}
+          />
+        )}
+
+        {currentStep === 3 && (
+          <TextInputIcon
+            secureTextEntry={isSecurity[currentStep - 1]}
+            icon={icons[currentStep - 1]}
+            value={password}
+            onChangeText={handleChangePassword}
           />
         )}
 
@@ -116,6 +189,8 @@ const Index = () => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <Toast />
     </SafeAreaView>
   );
 };
