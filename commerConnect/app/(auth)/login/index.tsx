@@ -16,20 +16,22 @@ import { APP_TEXT, AUTH_TEXT } from "../../../constant/text";
 import AuthButton from "../../../components/buttons/AuthButton";
 import { useState } from "react";
 import { useRouter } from "expo-router";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/auth-slice";
 
 const Index = () => {
   const [phone, setPhone] = useState<string>();
   const [password, setPassword] = useState<string>();
 
   const navigation = useRouter();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     const dataSend = {
       phone,
       password,
     };
-
-    console.log(dataSend);
+    dispatch(authActions.toggleAuth());
   };
 
   const handleChangePhone = (event: string) => {

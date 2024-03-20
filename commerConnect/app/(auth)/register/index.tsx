@@ -157,12 +157,6 @@ const Index = () => {
           />
         )}
 
-        <View style={styles.forgotContainer}>
-          <Pressable>
-            <Text>{AUTH_TEXT.forgotText}</Text>
-          </Pressable>
-        </View>
-
         <View style={styles.authButtonContainer}>
           <AuthButton
             text={

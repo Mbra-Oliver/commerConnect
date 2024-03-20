@@ -1,17 +1,23 @@
-import { Redirect } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import { Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const AppLayout = () => {
-  const isLogged = false;
+  const userLoggedStatus = useSelector(
+    (state: any) => state.authReducer.isLogged
+  );
 
-  if (!isLogged) {
+  if (!userLoggedStatus) {
     return <Redirect href="/login" />;
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Appeler depuis (App)</Text>
-    </View>
+    <Stack>
+      <Stack.Screen
+        name="(tabs)"
+        options={{ headerShown: false }}
+      ></Stack.Screen>
+    </Stack>
   );
 };
 

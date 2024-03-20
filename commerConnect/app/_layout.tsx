@@ -1,8 +1,13 @@
 import { Slot } from "expo-router";
-import { Text, View } from "react-native";
+import { Provider } from "react-redux";
+import reduxStore from "../store";
 
 const RootLayout = () => {
-  return <Slot />;
+  return (
+    <Provider store={reduxStore}>
+      <Slot />
+    </Provider>
+  );
 };
 
 export default RootLayout;
