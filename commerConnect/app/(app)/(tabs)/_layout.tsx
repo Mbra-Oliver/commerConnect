@@ -11,6 +11,7 @@ const TabsLayout = () => {
           tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <AntDesign name="home" size={size} color={color} />
           ),
+          headerShown:false
         }}
       ></Tabs.Screen>
 

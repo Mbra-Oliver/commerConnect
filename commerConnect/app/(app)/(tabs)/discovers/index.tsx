@@ -13,7 +13,7 @@ const Index = () => {
     { latitude: number; longitude: number }[]
   >([]);
   const [scanAnimation] = useState(new Animated.Value(0));
-  const mapViewRef = useRef<MapView>(null); // Référence à la carte
+  const mapViewRef = useRef<MapView>(null); 
 
   useEffect(() => {
     (async () => {
