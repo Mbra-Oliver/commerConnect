@@ -61,14 +61,11 @@ const FlashSaleTimer = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 15,
-  },
   flex: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 10,
+    paddingVertical: 10,
   },
   textContainer: {
     flex: 1,

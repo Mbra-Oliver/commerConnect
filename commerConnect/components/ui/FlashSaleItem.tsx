@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     flex: 1,
+    backgroundColor: "red",
   },
 
   imageContainer: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "cover", // pour ajuster la taille de l'image à la vue
+    resizeMode: "cover",
   },
   content: {
     width: "100%",
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
   price: {
     marginTop: 3,
     fontWeight: "900",
-    // Autres styles de prix
   },
 });
 

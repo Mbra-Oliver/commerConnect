@@ -1,59 +1,54 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import FlashSaleTimer from "../FlashSaleTimer";
 import HomeCarousel from "./HomeCaousel";
+import SearchBar from "./SearchBar";
+import { COLORS } from "../../constant/colors";
 
 const HomeHeader = () => {
   return (
     <View style={styles.container}>
       <View style={styles.flex}>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>ShopLink</Text>
-          <Text style={styles.textSm}>Découvrez vos rêves en produits.</Text>
-        </View>
+        <Text style={styles.title}>Bon retour</Text>
         <View style={styles.iconContainer}>
           <View
             style={{
-              borderWidth: 1,
-              borderColor: "gray",
-              borderRadius: 10,
+              borderRadius: 100,
               padding: 5,
+              backgroundColor: "white",
             }}
           >
-            <Feather name="search" size={18} color="black" />
-          </View>
-
-          <View
-            style={{
-              borderWidth: 1,
-              borderColor: "gray",
-              borderRadius: 10,
-              padding: 5,
-            }}
-          >
-            <Ionicons name="notifications-outline" size={18} color="black" />
+            <Image
+              source={require("./../../assets/default.png")}
+              style={{ width: 30, height: 30, resizeMode: "cover" }}
+            />
           </View>
         </View>
       </View>
 
-      <HomeCarousel />
+      <SearchBar />
 
-      <FlashSaleTimer />
+      <View style={{ paddingVertical: 10 }}>
+        <FlashSaleTimer />
+      </View>
+
+      <HomeCarousel />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
   },
   flex: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 10,
+    paddingVertical: 10,
   },
   textContainer: {
     flex: 1,
