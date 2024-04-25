@@ -13,6 +13,7 @@ const AppLayout = () => {
 
   return (
     <Stack>
+      <Stack.Screen name="[productId]"></Stack.Screen>
       <Stack.Screen
         name="(tabs)"
         options={{ headerShown: false }}

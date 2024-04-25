@@ -1,11 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import React from "react";
+import HomeHeader from "../../../components/ui/HomePage/HomeHeader";
 
 const index = () => {
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <HomeHeader />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
