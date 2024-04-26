@@ -8,17 +8,15 @@ const FlashSaleTimer = () => {
     seconds: 0,
   });
 
-  const flashEndDate = new Date("2024-05-10T10:00:00");
+  const flashEndDate = new Date("2024-04-27T10:00:00");
 
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
-      const difference = flashEndDate - now;
+      const difference = flashEndDate.getTime() - now.getTime();
 
       if (difference > 0) {
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
+        const hours = Math.floor(difference / (1000 * 60 * 60));
 
         const minutes = Math.floor(
           (difference % (1000 * 60 * 60)) / (1000 * 60)
@@ -27,8 +25,6 @@ const FlashSaleTimer = () => {
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setRemainingTime({ hours, minutes, seconds });
-
-        console.log(hours);
       } else {
         clearInterval(interval);
         setRemainingTime({ hours: 0, minutes: 0, seconds: 0 });

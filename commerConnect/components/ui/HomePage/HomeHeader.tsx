@@ -1,6 +1,33 @@
 import { StyleSheet, Image, Text, View } from "react-native";
 import SearchBar from "../SearchBar";
 import FlashSaleTimer from "./FlashSaleTimer";
+import HomeCarousel from "./HomeCarousel";
+
+const images = [
+  {
+    uri: "https://img.freepik.com/premium-vector/flash-sale-banner-promotion_131000-379.jpg?w=1800",
+  },
+
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+];
 
 const HomeHeader = () => {
   return (
@@ -19,6 +46,8 @@ const HomeHeader = () => {
       <SearchBar />
 
       <FlashSaleTimer />
+
+      <HomeCarousel showIndicator={false} datas={images} />
     </View>
   );
 };
@@ -27,14 +56,13 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    gap: 10,
+    gap: 20,
   },
 
   greeting: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 10,
   },
   title: {
     fontSize: 16,
