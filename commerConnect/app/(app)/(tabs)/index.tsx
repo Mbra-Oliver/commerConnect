@@ -43,8 +43,6 @@ const Index = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      
-
       <ScrollView>
         <HomeHeader />
 
@@ -55,19 +53,6 @@ const Index = () => {
         </View>
 
         <ProductList />
-
-        {/*<View style={styles.flatlistContainer}>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={DATA}
-          renderItem={renderFlashSaleItem}
-          keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={itemSeparator}
-        />
-  </View>
-
-      <HomeFooterProduct />*/}
       </ScrollView>
       <Toast />
     </SafeAreaView>

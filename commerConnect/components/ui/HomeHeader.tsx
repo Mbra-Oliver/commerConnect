@@ -7,6 +7,33 @@ import HomeCarousel from "./HomeCaousel";
 import SearchBar from "./SearchBar";
 import { COLORS } from "../../constant/colors";
 
+const images = [
+  {
+    uri: "https://img.freepik.com/free-vector/gradient-social-media-sale-post-template_23-2149050983.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/flash-sale-banner-promotion_131000-379.jpg?w=1800",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+  {
+    uri: "https://img.freepik.com/premium-vector/paper-style-12-12-sale-background_23-2149179973.jpg",
+  },
+];
+
 const HomeHeader = () => {
   return (
     <View style={styles.container}>
@@ -34,7 +61,7 @@ const HomeHeader = () => {
         <FlashSaleTimer />
       </View>
 
-      <HomeCarousel />
+      <HomeCarousel datas={images} showIndicator />
     </View>
   );
 };
