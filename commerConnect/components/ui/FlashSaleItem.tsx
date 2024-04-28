@@ -11,7 +11,7 @@ const FlashSaleItem = () => {
       </View>
 
       <View style={styles.content}>
-        <Text>Nom du produit</Text>
+        <Text style={{}}>Nom du produit</Text>
         <Text style={styles.price}>500k</Text>
       </View>
     </View>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   price: {
     marginTop: 3,
     fontWeight: "900",
+    fontFamily: "Montserrat",
   },
 });
 

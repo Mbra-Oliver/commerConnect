@@ -35,7 +35,7 @@ const ProductList = () => {
       {DATA_CATEGORIES.map((item, index) => (
         <Pressable
           key={index}
-          style={[styles.categorieItem, { width: windowWidth / 2 - 15 }]}
+          style={[styles.categorieItem, { width: windowWidth / 2 - 10 }]}
         >
           <View style={styles.imageContainer}>
             <Image
@@ -46,25 +46,37 @@ const ProductList = () => {
 
           <View
             style={{
-              flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center",
+              gap: 5,
             }}
           >
-            <View>
-              <Text style={[styles.text, styles.name]}>Home</Text>
-              <Text style={[styles.text, styles.price]}>+10000000</Text>
+            <View style={{ marginTop: 10 }}>
+              <Text style={[styles.text, styles.name]}>
+                Chaussures Femmes orangés gamer
+              </Text>
+
+              <Text style={{}}>Francis Doe</Text>
             </View>
-            <Pressable
+
+            <View
               style={{
-                backgroundColor: COLORS.primary,
-                padding: 5,
-                borderRadius: 100,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
-              onPress={AddedCartNotification}
             >
-              <AntDesign name="plus" size={15} color="white" />
-            </Pressable>
+              <Text style={[styles.text, styles.price]}>1000k</Text>
+              <Pressable
+                style={{
+                  backgroundColor: COLORS.white,
+                  padding: 5,
+                  borderRadius: 100,
+                }}
+                onPress={AddedCartNotification}
+              >
+                <AntDesign name="heart" size={15} color={COLORS.primary} />
+              </Pressable>
+            </View>
           </View>
         </Pressable>
       ))}
@@ -74,26 +86,26 @@ const ProductList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
     paddingVertical: 10,
+    gap: 10,
   },
 
   imageContainer: {
     width: "100%",
     height: 150,
+    backgroundColor: "white",
+    borderRadius: 15,
   },
   name: {
-    fontSize: 10,
     marginBottom: 5,
-    color: "gray",
     fontWeight: "bold",
+    fontSize: 14,
+    fontFamily: "Lato-Regular",
   },
   price: {
-    fontSize: 14,
-    color: COLORS.secondary,
+    fontFamily: "Lato-Regular",
   },
   backgroundImage: {
     width: "100%",
@@ -102,24 +114,25 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
+    fontFamily: "Lato-Regular",
   },
 
   categorieItem: {
-    backgroundColor: "white",
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 10,
     borderRadius: 10,
+    backgroundColor: "white",
 
     ...Platform.select({
       ios: {
-        shadowColor: "#000",
+        shadowColor: "#eee",
         shadowOffset: {
           width: 0,
           height: 1,
         },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
+        shadowOpacity: 0.1,
+        shadowRadius: 1,
       },
     }),
   },

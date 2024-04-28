@@ -18,6 +18,7 @@ import ProductList from "../../../components/ui/ProductList";
 import SectionTitle from "../../../components/ui/SectionTitle";
 import SearchBar from "../../../components/ui/SearchBar";
 import Toast from "react-native-toast-message";
+import { useFonts } from "expo-font";
 
 const DATA = [
   {
@@ -35,6 +36,10 @@ const DATA = [
 ];
 
 const Index = () => {
+  const [fontsLoaded] = useFonts({
+    "Lato-Regular": require("./../../../assets/fonts/Lato-Regular.ttf"),
+  });
+
   const renderFlashSaleItem = ({ item }: { item: { title: string } }) => (
     <FlashSaleItem />
   );
@@ -44,6 +49,8 @@ const Index = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+        <Text style={{ fontFamily: "Lato-Regular" }}>Lorem ipsum dolor</Text>
+
         <HomeHeader />
 
         <CategorieFlatList />

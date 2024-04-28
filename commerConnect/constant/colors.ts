@@ -14,4 +14,6 @@ export const COLORS = {
   light: "#ECF0F1",
   text: "#2C3E50",
   background: "#FFFFFF",
+
+  fontFamly: "Montserrat",
 };
