@@ -3,6 +3,7 @@ import React from "react";
 import HomeHeader from "../../../components/ui/HomePage/HomeHeader";
 import CategorieCarousel from "../../../components/ui/HomePage/CategorieCarousel";
 import ProductList from "../../../components/api/ProductList";
+import Toast from "react-native-toast-message";
 
 const index = () => {
   return (
@@ -14,6 +15,7 @@ const index = () => {
 
         <ProductList />
       </ScrollView>
+      <Toast />
     </SafeAreaView>
   );
 };
